@@ -1,10 +1,11 @@
 import {createRouter,createWebHistory} from "vue-router";
 import NewsSingle from "@/components/NewsSingle";
+import MainPage from "@/components/MainPage";
 
 const routes = [
     {
-        path: "/events/:id",
-        component: {template: "<div>Одно мероприятие {{$route.params.id}}</div>"}
+      path: "/",
+      component: MainPage
     },
 
     {

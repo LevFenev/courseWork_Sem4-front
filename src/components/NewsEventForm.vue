@@ -67,7 +67,6 @@
       </label>
       <br/>
       <label><input type="file"></label><br/>
-      <label><span>Комментарии</span> <input type="checkbox"></label><br/>
       <label>
         <button>Опубликовать</button>
       </label>

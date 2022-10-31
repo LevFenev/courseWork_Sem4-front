@@ -1,9 +1,9 @@
 <template>
-  <div>Одна новость {{$route.params.id}}</div>
+  <div>Страница новости {{$route.params.id}}</div>
   <div :id="item.id" :key="item.id" class="news" v-for="item in $store.state.news">
     <div v-if="item.id === parseInt($route.params.id)">
       <div class="news_heading">
-        <router-link :to="'/news/'+item.id">{{item.news_heading}}</router-link>
+        <router-link to="/">{{item.news_heading}}</router-link>
       </div>
       <div class="news_text">
         {{ item.news_text }}
