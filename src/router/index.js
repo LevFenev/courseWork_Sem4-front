@@ -9,7 +9,7 @@ const routes = [
     },
 
     {
-        path: "/courseWork_Sem4-front/news/:id",
+        path: "/courseWork_Sem4-front/public/news/:id",
         component: NewsSingle
     }
 ]
