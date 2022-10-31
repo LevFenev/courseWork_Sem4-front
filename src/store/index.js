@@ -40,7 +40,7 @@ export default new Vuex.Store({
 
         INIT_COMMENT: async (context) => {
             context.state.comments = []; // подчищает так, чтобы дальше бралось только из файла
-            Axios.get('/comments.json').then(function (response) {
+            Axios.get('/courseWork_Sem4-front/comments.json').then(function (response) {
                 let data = response.data;
                 for(let i = 0; i < data.length; i++) {
                     context.commit("ADD_COMMENT", data[i])
@@ -50,7 +50,7 @@ export default new Vuex.Store({
 
         INIT_EVENTS: async (context) => {
           context.state.events = []; // подчищает так, чтобы дальше бралось только из файла
-          Axios.get('/events.json').then(function (response) {
+          Axios.get('/courseWork_Sem4-front/events.json').then(function (response) {
               let data = response.data;
               for(let i = 0; i < data.length; i++) {
                   context.commit("ADD_EVENT", data[i])
@@ -60,7 +60,7 @@ export default new Vuex.Store({
 
         INIT_NEWS: async (context) => {
             context.state.news = []; // подчищает так, чтобы дальше бралось только из файла
-            Axios.get('/news.json').then(function (response) {
+            Axios.get('/courseWork_Sem4-front/news.json').then(function (response) {
                 let data = response.data;
                 for(let i = 0; i < data.length; i++) {
                     context.commit("ADD_NEWS", data[i])
