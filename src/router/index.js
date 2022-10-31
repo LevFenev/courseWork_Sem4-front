@@ -4,12 +4,12 @@ import MainPage from "@/components/MainPage";
 
 const routes = [
     {
-      path: "/",
+      path: "/courseWork_Sem4-front/",
       component: MainPage
     },
 
     {
-        path: "/news/:id",
+        path: "/courseWork_Sem4-front/news/:id",
         component: NewsSingle
     }
 ]
