@@ -3,7 +3,7 @@
   <div :id="item.id" :key="item.id" class="news" v-for="item in $store.state.news">
     <div v-if="item.id === parseInt($route.params.id)">
       <div class="news_heading">
-        <router-link to="/">{{item.news_heading}}</router-link>
+        <router-link to="/courseWork_Sem4-front/">{{item.news_heading}}</router-link>
       </div>
       <div class="news_text">
         {{ item.news_text }}
