@@ -1,37 +1,61 @@
 <template>
-  <p :class="className">
-    Привет, {{ world }} мир!
-  </p>
-  <button @click="changeWorld">
-    Нажми меня!
-  </button>
+<!--  <p :class="className">-->
+<!--    Привет, {{ world }} мир!-->
+<!--  </p>-->
+<!--  <button @click="changeWorld">-->
+<!--    Нажми меня!-->
+<!--  </button>-->
 
-  <button @click="changeTextColor">
-    Нажми меня, произойдет розовое чудо!
-  </button>
+<!--  <button @click="changeTextColor">-->
+<!--    Нажми меня, произойдет розовое чудо!-->
+<!--  </button>-->
 
   <button @click="changeWorld2">
-    Нажми, чтобы изменить мир!
+<!--    Нажми, чтобы изменить мир!-->
+    Перейти на главную
   </button>
 
-  <div class="events">
+
+<!--  <br/>-->
+<!--  <button @click="plusOne">-->
+<!--    +1-->
+<!--  </button>-->
+<!--  <button @click="minusOne">-->
+<!--    -1-->
+<!--  </button>-->
+<!--  <button @click="add10">-->
+<!--    *10-->
+<!--  </button>-->
+
+<!--  <input type="number" v-model="defaultNumber">-->
+
+<!--  <div :key="i" class="stars" v-for="i in parseInt(defaultNumber)">-->
+<!--    *-->
+<!--  </div>-->
+
+<!--  <p>-->
+<!--    {{numberOne}}-->
+<!--  </p>-->
+
+
+  <div class="events" v-if="currentPath === '/'">
     <div :id="item.id" :key="item.id" class="event" v-for="item in eventsData">
-      <div class="heading">
+      <div class="events_heading">
         {{ item.event_heading }}
       </div>
-      <div class="text">
+      <div class="events_text">
         {{ item.event_text }}
       </div>
-      <div class="date">
+      <div class="events_date">
         {{ item.event_date }}
       </div>
-      <div class="time">
+      <div class="events_time">
         {{ item.event_time }}
       </div>
-      <div class="location">
+      <div class="events_location">
         {{ item.event_location }}
       </div>
-      <div class="author">
+      <div class="events_author">
         {{ item.event_author }}
       </div>
       <div v-if="item.event_photo" class="photo">
@@ -40,10 +64,10 @@
     </div>
   </div>
 
-  <div class="news">
+  <div class="news" v-if="currentPath === '/'">
     <div :id="item.id" :key="item.id" class="news" v-for="item in newsData">
       <div class="news_heading">
-        {{ item.news_heading }}
+        <router-link :to="'/news/'+item.id">{{item.news_heading}}</router-link>
       </div>
       <div class="news_text">
         {{ item.news_text }}
@@ -77,13 +101,15 @@
       </div>
     </div>
   </div>
+  {{currentPath}}
+  <router-view></router-view>
 
-  <newsEventForm></newsEventForm>
+  <NewsEventForm></NewsEventForm>
 </template>
 
 <script>
-import newsEventForm from "@/components/NewsEventForm";
 import CommentForm from "@/components/CommentForm";
+import NewsEventForm from "@/components/NewsEventForm"; // было newsEventForm
 
 export default {
   data() {
@@ -92,39 +118,67 @@ export default {
       className: "",
       eventsData: [],
       newsData: [],
-      commentsData: []
+      commentsData: [],
+
+      // defaultNumber: 17
     }
   },
 
   components: {
     CommentForm,
-    newsEventForm
+    NewsEventForm
+  },
+
+  computed: {
+    currentPath() {
+      return this.$router.currentRoute._value.path;
+    }
   },
 
   methods: {
-    changeWorld() {
-      this.world = "вообще " + this.world
-    },
+    // changeWorld() {
+    //   this.world = "вообще " + this.world
+    // },
 
-    changeTextColor() {
-      this.className = "pinkText"
-    },
+    // changeTextColor() {
+    //   this.className = "pinkText"
+    // },
 
-    // сделать так, чтоб комментарии отображались у каждого ивента / новости
+    // currentPath() {
+    //   return this.$router.currentRoute._value.path;
+    // },
 
     changeWorld2() {
+      console.log(this.$router)
+
       let that = this;
-      this.axios.get('events.json').then(function (response) {
-        that.eventsData = response.data;
+      this.$store.dispatch("INIT_COMMENT").then(() => {
+        that.commentsData = this.$store.state.comments;
       })
-      this.axios.get('news.json').then(function (response) {
-        that.newsData = response.data;
+      this.$store.dispatch("INIT_EVENTS").then(() => {
+        that.eventsData = this.$store.state.events;
       })
-      this.axios.get('comments.json').then(function (response) {
-        that.commentsData = response.data;
+      this.$store.dispatch("INIT_NEWS").then(() => {
+        that.newsData = this.$store.state.news;
       })
-    }
-  }
+    },
+
+    // plusOne() {
+    //   this.defaultNumber = this.defaultNumber + 1
+    // },
+    //
+    // minusOne() {
+    //   this.defaultNumber = this.defaultNumber - 1
+    // },
+    //
+    // add10() {
+    //   this.defaultNumber = this.defaultNumber * 10
+    // },
+    //
+    // counterPlusOne() {
+    //   this.$store.state.counter = this.$store.state.counter + 1
+    // }
+  },
 }
 </script>
 
@@ -133,9 +187,21 @@ export default {
   color: pink;
 }
 
+.news_heading, .events_heading {
+  font-weight: bold;
+}
+
+.news_source, .events_author {
+  font-style: italic;
+}
+
 .event, .news {
   width: 380px;
   border: 1px solid;
+}
+
+.comments {
+  border-top: 1px solid;
 }
 
 .event {
