@@ -2,7 +2,7 @@
   <div class="news">
     <div :id="item.id" :key="item.id" class="news" v-for="item in $store.state.news">
       <div class="news_heading">
-        <router-link :to="'/news/'+item.id">{{item.news_heading}}</router-link>
+        <router-link :to="'/courseWork_Sem4-front/news/'+item.id">{{item.news_heading}}</router-link>
       </div>
       <div class="news_text">
         {{ item.news_text }}
