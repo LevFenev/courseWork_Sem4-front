@@ -7,7 +7,7 @@
     "event_time": "16:00",
     "event_location": "м. Кунцевская",
     "event_author": "Школа №147",
-    "event_photo": "/photo/event_1.jpg",
+    "event_photo": "courseWork_Sem4-front/photo/event_1.jpg",
     "isCommentsAllowed": false
   },
   {
@@ -29,7 +29,7 @@
     "event_time": "15:30",
     "event_location": "г. Волгоград, ул. Спортивная, 14",
     "event_author": "",
-    "event_photo": "/photo/event_3.jpg",
+    "event_photo": "courseWork_Sem4-front/photo/event_3.jpg",
     "isCommentsAllowed": true
   },
   {
@@ -40,7 +40,7 @@
     "event_time": "17:45",
     "event_location": "г. Москва, ул. Отличная, 25, ст.5",
     "event_author": "",
-    "event_photo": "/photo/event_4.jpg",
+    "event_photo": "courseWork_Sem4-front/photo/event_4.jpg",
     "isCommentsAllowed": false
   },
   {
@@ -51,7 +51,7 @@
     "event_time": "17:45",
     "event_location": "г. Москва, ул. Отличная, 25, ст.5",
     "event_author": "",
-    "event_photo": "/photo/event_4.jpg",
+    "event_photo": "courseWork_Sem4-front/photo/event_4.jpg",
     "isCommentsAllowed": false
   },
   {
